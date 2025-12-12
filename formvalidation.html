@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./form.css">
+</head>
+<body>
+  
+  <form class="form" onsubmit="handle(event)">
+  
+    <div id="main">
+    <h1>Registration Form</h1>
+    
+    <div class="lable"><label >First Name:</label></div>
+    <div><input type="text" id="first" placeholder="Enter First name" required>
+    </div>
+    <div class="lable"><label >Last Name:</label></div>
+    <div>
+    <input type="text" id="last"  placeholder="Enter Last Name"required>
+    </div>
+    <div class="lable"><lable>Email:</lable></div>
+    <div>
+    <input type="text" id="email" placeholder="Enter Email" required></div>
+    <div class="lable"> <lable>Password:</lable></div>
+      <div>
+       
+        <input type="password" id="pwd" placeholder="Password" required>
+      </div>
+      <div class="lable"><lable>Re-type password:</lable></div>
+      <div>
+        
+        <input type="password" id="newpwd" placeholder="Again type your password" required>
+      </div>
+      <div class="lable"> <lable>Phone No:</lable></div>
+      <div>
+       
+        <input type="text" id="phn" placeholder="Contact No" required>
+      </div>
+      <div class="lable"><label>Gender:</label></div>
+      <div>
+      
+      <select id="select" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="others">Others</option>
+      </select>
+      </div>
+      <div >
+        <button id="button"  type="submit">Sumbit</button>
+      </div>
+
+    </div>
+    
+
+
+  
+  </form>
+  <script>
+    function handle(event){
+    event.preventDefault();
+    let fname=document.getElementById("first").value.trim();
+    let lname=document.getElementById("last").value.trim();
+    let pwd=document.getElementById("pwd").value.trim();
+    let newpwd=document.getElementById("newpwd").value.trim();
+    let phn=document.getElementById("phn").value.trim();
+    let s=document.getElementById("select").value.trim();
+    let email=document.getElementById("email").value.trim();
+    let button=document.getElementById("button");
+    button.addEventListener("click",()=>{
+      button.textContent="Successfully Submitted";
+    })
+    
+    
+    if (fname.length<=3){
+      alert("First Name must be more than 3 characters");
+
+    }
+    else if (lname==""){
+      alert(" Last name can't be empty");
+
+    }
+    /*else if(email=="")
+    {
+      alert("Enter a email");
+    }*/
+    
+    else if((!email.includes("@"))&&(!email.includes(".com"))){
+      alert("Enter a valid email");
+    }
+   /* else if(pwd=="")
+    {
+      alert("Enter password");
+    }
+    else if(newpwd==""){
+      alert("Again type password");
+    }*/
+    else if(pwd!=newpwd)
+    {
+      alert("Password Mismatch!! Please check the password");
+    }
+    else if((phn.length<10) || (phn.length>10))
+    {
+      alert("Phone number must be 10");
+    }
+    /*else if(s==""){
+      alert("Select Gender")
+
+    }*/
+
+    else{
+      alert(`Form successfully Submitted with Name : ${fname} ${lname}`);
+      fname=""
+    }
+    
+
+  
+      }  </script>
+
+  
+</body>
+</html>
